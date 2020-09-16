@@ -36,7 +36,7 @@ public class Aplicacion {
 
 
     private  int mostrarMenu(){
-        System.out.println("Elija una opción:\n " +
+        System.out.println("Elija una opción:\n" +
                            "1.Listar usuarios\n" +
                            "2.Añadir usuario\n"+
                            "3.Eliminar usuario\n" +

@@ -7,11 +7,10 @@ public class MenuHelper {
     public Scanner sc = new Scanner(System.in);
 
     public void mostrarUsuarios() throws SQLException {
-        for (Usuario usuario:dao.listarUsuarios()
-             ) {
+        for (Usuario usuario:dao.loadUsers()) {
             System.out.println(usuario.toString());
         }
-        dao.cerrarConexion();
+        //dao.cerrarConexion();
     }
 
     public void añadirUsuario() throws SQLException {
@@ -28,13 +27,16 @@ public class MenuHelper {
         String sede = sc.next();
 
         Usuario usuario=new Usuario(nombre,apellidos,departamento,sede);
-        System.out.println(dao.insertUsuario(usuario));
+        System.out.println(dao.insertUser(usuario));
         //dao.cerrarConexion();
     }
 
-    public void eliminarUsuario(){
+    public void eliminarUsuario() throws SQLException {
 
-
+        mostrarUsuarios();
+        System.out.println("Indica el id del usuario que quiere eliminar");
+        int idEliminar = sc.nextInt();
+        System.out.println( dao.deleteUser(idEliminar));
 
     }
 
