@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DAO {
+public class DAOPostgres implements IDAO {
 
     Connection conexión = null;
     String url = "jdbc:postgresql://192.168.56.2/tecnojava";
@@ -39,16 +39,21 @@ public class DAO {
 
     public String insertUsuario(Usuario usuario) throws SQLException {
         Statement s = this.conexión.createStatement();
-        String sql = "INSERT INTO usuarios(nombre,apellidos,departamento,sede)\n" +
-                "VALUES(" + usuario.nombre + "," + usuario.apellidos + "," + usuario.departamento + "," + usuario.sede + ");";
+        String sql = "INSERT INTO usuario(nombre,apellidos,departamento,sede)\n" +
+                "VALUES('" + usuario.nombre + "','" + usuario.apellidos + "','" + usuario.departamento + "','" + usuario.sede + "');";
 
-        ResultSet rs = s.executeQuery(sql);
+        int rowAdd=s.executeUpdate(sql);
 
-        return " ";
+        if(rowAdd==1){
+            return "Se ha añadido correctamente el registro a la bbdd";
+        }else{
+            return "No se ha añadido el registro a la bbdd";
+        }
+
 
     }
 
-    public String deleteUsuario(Usuario usuario) {
+    public String deleteUsuario(int id) {
         return " ";
     }
 

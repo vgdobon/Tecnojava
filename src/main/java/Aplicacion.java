@@ -9,24 +9,31 @@ public class Aplicacion {
 
         MenuHelper menuHelper=new MenuHelper();
 
-        switch (mostrarMenu()){
-            case 1:
-                menuHelper.mostrarUsuarios();
-                ;
-            case 2:
+        int opcionMenu=0;
+        while(opcionMenu!=4){
 
-                menuHelper.añadirUsuario();
-                ;
-            case 3:
+            opcionMenu=mostrarMenu();
+            switch (opcionMenu){
+                case 1:
+                    menuHelper.mostrarUsuarios();
+                    break;
+                case 2:
 
-                menuHelper.eliminarUsuario();
-                ;
-            case 4:
-                System.out.println("CERRANDO LA APLICACIÓN");
-                ;
+                    menuHelper.añadirUsuario();
+                    break;
+                case 3:
+
+                    menuHelper.eliminarUsuario();
+                    break;
+                case 4:
+                    System.out.println("CERRANDO LA APLICACIÓN");
+                    break;
+            }
         }
 
     }
+
+
 
     private  int mostrarMenu(){
         System.out.println("Elija una opción:\n " +
@@ -36,7 +43,6 @@ public class Aplicacion {
                            "4.Cerrar la aplicación");
 
         int opcion = sc.nextInt();
-
         return opcion;
     }
 
