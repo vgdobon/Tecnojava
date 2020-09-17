@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DAOPostgres implements IDAO {
 
-    Connection conexión = null;
+    Connection conexion = null;
     String url = "jdbc:postgresql://192.168.56.2/tecnojava";
     String usuario = "victor";
     String clave = "620312786";
@@ -18,7 +18,7 @@ public class DAOPostgres implements IDAO {
         try
         {
             Class.forName("org.postgresql.Driver");
-            conexión = DriverManager.getConnection(url,usuario,clave);
+            conexion = DriverManager.getConnection(url,usuario,clave);
         }
         catch(SQLException | ClassNotFoundException ex)
         {
@@ -31,7 +31,7 @@ public class DAOPostgres implements IDAO {
 
 
     public String insertUser(Usuario usuario) throws SQLException {
-        Statement s = this.conexión.createStatement();
+        Statement s = this.conexion.createStatement();
         String sql = "INSERT INTO usuarios(nombre,apellidos,departamento,sede)\n" +
                 "VALUES('" + usuario.nombre + "','" + usuario.apellidos + "','" + usuario.departamento + "','" + usuario.sede + "');";
 
@@ -47,7 +47,7 @@ public class DAOPostgres implements IDAO {
     }
 
     public String deleteUser(int id) throws SQLException {
-        Statement s = this.conexión.createStatement();
+        Statement s = this.conexion.createStatement();
         String sql = "DELETE FROM usuarios WHERE id=" + id + ";";
         int rowModified = s.executeUpdate(sql);
 
@@ -61,7 +61,7 @@ public class DAOPostgres implements IDAO {
     public List<Usuario> loadUsers() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
 
-        Statement statement = conexión.createStatement();
+        Statement statement = conexion.createStatement();
         String sql = "SELECT * FROM usuarios;";
 
         ResultSet resultSet = statement.executeQuery(sql);
