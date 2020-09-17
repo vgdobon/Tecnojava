@@ -1,13 +1,23 @@
-import sun.util.locale.LocaleUtils;
-
+import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class MenuHelper {
 
-    IDAO dao=FactoryDAO.createDAO(Constantes.actualDDBB);
-    public Scanner sc = new Scanner(System.in);
+    IDAO dao;
+    Scanner sc=new Scanner(System.in);
+    Properties properties;
+
+    public MenuHelper(){
+        try {
+            this.properties =  new Properties();
+            properties.load(getClass().getResourceAsStream(Constantes.PROPERTIES_PATH));
+            dao=FactoryDAO.createDAO(Constantes.DAOS.valueOf(properties.getProperty("dao")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void mostrarUsuario() throws SQLException {
         for (Usuario usuario:dao.loadUsers()) {

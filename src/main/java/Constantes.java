@@ -1,9 +1,10 @@
 public class Constantes {
 
-    public enum DAOS{
+
+    public enum DAOS {
         POSTGRES,
         MYSQL
     }
 
-    public static final DAOS actualDDBB = DAOS.MYSQL;
+    public static final String PROPERTIES_PATH = "/resources/properties.properties";
 }

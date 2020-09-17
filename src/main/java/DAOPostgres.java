@@ -17,8 +17,10 @@ public class DAOPostgres implements IDAO {
 
         try
         {
-            Class.forName("org.postgresql.Driver");
+
             conexion = DriverManager.getConnection(url,usuario,clave);
+            Class.forName("org.postgresql.Driver");
+            System.out.println("Conexión a la bbdd establecida.");
         }
         catch(SQLException | ClassNotFoundException ex)
         {

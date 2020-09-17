@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -5,7 +6,7 @@ public class Aplicacion {
     MenuHelper menu;
     Scanner sc = new Scanner(System.in);
 
-    public void ejecutar() throws SQLException {
+    public void ejecutar() throws SQLException, IOException {
 
         MenuHelper menuHelper=new MenuHelper();
 
