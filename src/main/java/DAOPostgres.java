@@ -13,29 +13,22 @@ public class DAOPostgres implements IDAO {
     String usuario = "victor";
     String clave = "620312786";
 
-    public Boolean realizarConexion(){
+    public DAOPostgres(){
 
         try
         {
             Class.forName("org.postgresql.Driver");
             conexión = DriverManager.getConnection(url,usuario,clave);
-            return true;
         }
         catch(SQLException | ClassNotFoundException ex)
         {
             System.out.println("Error la Base de Datos");
             ex.printStackTrace();
-            return false;
+
         }
     }
 
-    public Connection getConnection(){
-        return conexión;
-    }
 
-    public void cerrarConexion(){
-        conexión = null;
-    }
 
     public String insertUser(Usuario usuario) throws SQLException {
         Statement s = this.conexión.createStatement();
@@ -69,7 +62,7 @@ public class DAOPostgres implements IDAO {
         List<Usuario> usuarios = new ArrayList<>();
 
         Statement statement = conexión.createStatement();
-        String sql = "SELECT * FROM usuario;";
+        String sql = "SELECT * FROM usuarios;";
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()){
