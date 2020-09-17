@@ -31,7 +31,7 @@ public class DAOPostgres implements IDAO {
     }
 
 
-
+    @Override
     public String insertUser(Usuario usuario) throws SQLException {
         Statement s = this.conexion.createStatement();
         String sql = "INSERT INTO usuarios(nombre,apellidos,departamento,sede)\n" +
@@ -48,6 +48,7 @@ public class DAOPostgres implements IDAO {
 
     }
 
+    @Override
     public String deleteUser(int id) throws SQLException {
         Statement s = this.conexion.createStatement();
         String sql = "DELETE FROM usuarios WHERE id=" + id + ";";
@@ -79,6 +80,7 @@ public class DAOPostgres implements IDAO {
     }
 
 
+    @Override
     public List<Usuario> loadUsers() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -99,6 +101,7 @@ public class DAOPostgres implements IDAO {
         return usuarios;
     }
 
+    @Override
     public Usuario loadUser(int id) throws SQLException {
 
         Statement statement = conexion.createStatement();

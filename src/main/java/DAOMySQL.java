@@ -15,9 +15,10 @@ public class DAOMySQL implements IDAO {
         try
         {
             conexion = DriverManager.getConnection(url,usuario,clave);
-
+            Class.forName("org.postgresql.Driver");
+            System.out.println("Conexión a la bbdd establecida.");
         }
-        catch(SQLException ex)
+        catch(SQLException | ClassNotFoundException ex)
         {
             System.out.println("Error la Base de Datos");
             ex.printStackTrace();

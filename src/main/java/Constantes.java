@@ -6,5 +6,5 @@ public class Constantes {
         MYSQL
     }
 
-    public static final String PROPERTIES_PATH = "/resources/properties.properties";
+    public static final String PROPERTIES_PATH = "/properties.properties";
 }
