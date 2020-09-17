@@ -5,5 +5,5 @@ public class Constantes {
         MYSQL
     }
 
-    public static final DAOS actualDDBB = DAOS.POSTGRES;
+    public static final DAOS actualDDBB = DAOS.MYSQL;
 }

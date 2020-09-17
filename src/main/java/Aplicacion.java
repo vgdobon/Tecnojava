@@ -10,12 +10,13 @@ public class Aplicacion {
         MenuHelper menuHelper=new MenuHelper();
 
         int opcionMenu=0;
-        while(opcionMenu!=4){
+        while(opcionMenu!=5){
 
             opcionMenu=mostrarMenu();
             switch (opcionMenu){
                 case 1:
-                    menuHelper.mostrarUsuarios();
+
+                    menuHelper.mostrarUsuario();
                     break;
                 case 2:
 
@@ -26,6 +27,11 @@ public class Aplicacion {
                     menuHelper.eliminarUsuario();
                     break;
                 case 4:
+
+                   menuHelper.modificarUsuario();
+                   break;
+                case 5:
+
                     System.out.println("CERRANDO LA APLICACIÓN");
                     break;
             }
@@ -40,7 +46,8 @@ public class Aplicacion {
                            "1.Listar usuarios\n" +
                            "2.Añadir usuario\n"+
                            "3.Eliminar usuario\n" +
-                           "4.Cerrar la aplicación");
+                           "4.Modificar usuario\n" +
+                           "5.Cerrar la aplicación");
 
         int opcion = sc.nextInt();
         return opcion;

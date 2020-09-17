@@ -58,6 +58,25 @@ public class DAOPostgres implements IDAO {
         }
     }
 
+    @Override
+    public String modifyUser(Usuario usuario, String campoModificar, String valorCampoModificar) throws SQLException {
+        Statement s = this.conexion.createStatement();
+        String sql = "UPDATE usuarios SET " + campoModificar + "=" + valorCampoModificar + "" +
+                "WHERE id=" +usuario.id + ";";
+        int rowModified = s.executeUpdate(sql);
+        if(rowModified==1){
+
+            return "Se ha eliminado correctamente el registro a la bbdd";
+
+        }else{
+
+            return "No se ha eliminado el registro de la bbdd";
+
+        }
+
+    }
+
+
     public List<Usuario> loadUsers() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -76,6 +95,16 @@ public class DAOPostgres implements IDAO {
         }
         statement.close();
         return usuarios;
+    }
+
+    public Usuario loadUser(int id) throws SQLException {
+
+        Statement statement = conexion.createStatement();
+        String sql = "SELECT * FROM usuarios WHERE id=" + id +";";
+        ResultSet resultSet = statement.executeQuery(sql);
+        Usuario usuario=new Usuario(resultSet.getInt("id"),resultSet.getString("nombre"),resultSet.getString("nombre"),resultSet.getString("departamento"),resultSet.getString("departamento"));
+        statement.close();
+        return usuario;
     }
 
 }
